@@ -14,5 +14,32 @@
         {{ post.body | linebreaks }}
     </p>
 
+    {% with comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} تعليقات
+        </h2>
+    {% endwith %}
+    
+    {% for comment in comments %}
+        <div class="comment">  
+            <p class="info">
+                التعليق {{ forloop.counter }} بواسطة {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks }}
+        </div>
+    {% empty %}
+        <p>لايوجد تعليق</p>
+    {% endfor %}
+
+
+
+    <h2>أضف تعليق:</h2>
+        <form action="{% url "core:post_comment" post.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Add comment"></p>
+    </form>
+
 {% endblock content %}
     
