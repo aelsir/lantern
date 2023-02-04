@@ -4,6 +4,8 @@ from .models import Post
 # Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+
+    
     list_display = ['title_arabic', 'slug', 'author', 'publish', 'status']
     list_filter = ['status', 'created', 'publish', 'author']
     search_fields = ['title', 'title_arabic', 'body']

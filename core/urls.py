@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import index
+from .views import PostListView, detail
+
+app_name = 'core'
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', PostListView.as_view(), name='list'),
+    path('<int:year>/<int:month>/<int:day>/<slug:post_slug>/', detail, name='detail')
 ]
