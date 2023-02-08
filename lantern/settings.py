@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
     # Internal apps
     'core.apps.CoreConfig',
+
+    # Third party application
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'ar-SD'
+LANGUAGE_CODE = 'en'
+
+#LANGUAGE_CODE = 'ar-SD'
 
 TIME_ZONE = 'Africa/Khartoum'
 
