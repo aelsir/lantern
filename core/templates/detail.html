@@ -6,13 +6,21 @@
 {% endblock title %}
     
 {% block content %}
+<div id='post-header'>
     <h1>{{ post.title_arabic }}</h1>
     <p>
-        تم النشر يوم {{ post.publish.date }} بواسطة {{post.author}}
+        تم النشر يوم {{ post.publish.date }} بواسطة: {{post.author.first_name}}
     </p>
-    <p>
+</div>
+<div id='post-body' class='px-5'>
+    <br>
+    <h4>
         {{ post.body | linebreaks }}
-    </p>
+    </h4>
+
+    <br>
+    <hr>
+    <br>
 
     {% with comments.count as total_comments %}
         <h2>
@@ -45,8 +53,10 @@
         <form action="{% url "core:post_comment" post.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <p><input type="submit" value="Add comment"></p>
+        <p><input type="submit" class="btn btn-primary" value="أضف تعليقا"></p>
     </form>
+</div>
+    
 
 {% endblock content %}
     

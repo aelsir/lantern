@@ -11,10 +11,10 @@
   <body>
     <ul class="nav align-baseline justify-content-center fs-2">
         <li class="nav-item">
-            <a class="" href="{% url 'core:list' %}"><img src="{% static 'img/ltc_icon.png' %}" alt="" height='50em'></a>
+            <a href="{% url 'core:list' %}"><img src="{% static 'img/ltc_icon.png' %}" alt="" height='50em'></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'core:list' %}">الرئيسية</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">فيديوهات</a>

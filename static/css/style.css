@@ -27,10 +27,31 @@ body {
     display: grid;
 }
 
-.nav-item {
+.nav-link {
     color: #023F79;
+}
+.nav-link:hover {
+    color: #FFB600; 
+}
+
+p.tags, p.tags a {
+    color: whitesmoke;
 }
 
 .card-text {
     align-self: end;
+}
+
+#post-header {
+    color: #023F79;
+    font-family: 'Almarai ExtraBold';
+}
+
+#post-body {
+    color: #023F79;
+    font-family: 'Almarai Light';
+}
+
+div h4{
+    justify-content: space-around;
 }
