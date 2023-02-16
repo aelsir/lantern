@@ -30,7 +30,8 @@ The main model of the app is **Post** model it contain all of the data related t
 ### post_list
 
 This view displays a list of all the posts that have been published on the blog. To access this view, go to <http://localhost:8000/>. Each post is displayed as a clickable link that will take you to the post_detail view.
-![Posts List](https://photos.app.goo.gl/euSgbTPiNvGWbnkWA)
+
+![Posts List](https://lh3.googleusercontent.com/VEExaWzIozInfxoam2etTb3xQgOfT23ANZHxKX7u_7Gn6KEza3rYl-DFjw_tgtf0rW7DKB1ZxyG-ZeV-7mYgyk4w0UBuWYbCHODEY-qMH8FwL95rdLKJfhK-I9otX3prI9crcjfh7Go=w2400)
 
 ### post_detail
 
@@ -40,7 +41,8 @@ This view displays the details of a single post. To access this view, click on t
 - Author: The name of the writer who published the post.
 - Published Time: The time when the post was published.
 - Body: The full body of the post.
-![Post Detail](https://photos.app.goo.gl/Ww6SbCXDAhPfAwP89)
+
+![Post Detail](https://lh3.googleusercontent.com/N281i0kHJFoXonS9pdrmY4BSBDgRoK8OW4UWkE_9TEEOUAR37thvfmU-6XpYQdITudVvvuwPfG62MoFki2VHE-vZtMWlwlLCwIPGYD4YZ9pFhXZnfzX74w8AZH5UHkKJnfMVRKBv60c=w2400)
 
 ## Contributing
 
