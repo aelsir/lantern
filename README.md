@@ -30,6 +30,7 @@ The main model of the app is **Post** model it contain all of the data related t
 ### post_list
 
 This view displays a list of all the posts that have been published on the blog. To access this view, go to <http://localhost:8000/>. Each post is displayed as a clickable link that will take you to the post_detail view.
+![Posts List](https://photos.app.goo.gl/euSgbTPiNvGWbnkWA)
 
 ### post_detail
 
@@ -39,6 +40,7 @@ This view displays the details of a single post. To access this view, click on t
 - Author: The name of the writer who published the post.
 - Published Time: The time when the post was published.
 - Body: The full body of the post.
+![Post Detail](https://photos.app.goo.gl/Ww6SbCXDAhPfAwP89)
 
 ## Contributing
 
