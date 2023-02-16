@@ -6,29 +6,39 @@
 {% endblock title %}
     
 {% block content %}
-    <h1>My Blog</h1>
     
     {% if tag %}
         <h2>بوستات تحتوي العلامات "{{ tag.name }}"</h2>
     {% endif %}
 
-    {% for post in posts %}
-    <h2>
-        <a href="{{post.get_absolute_url}}">{{ post.title_arabic }}</a>
-    </h2>
-    <p class='tags'>
-        العلامات:
-        {% for tag in post.tags.all %}
-        <a href="{% url 'core:post_list_by_tag' tag.slug %}">{{tag.name}}</a>
-        
-        {% if not forloop.last %}, {% endif %}
-            
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 m-2">
+            <a href="{{post.get_absolute_url}}" style="all:unset">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="fs-1">
+                                {{post.title_arabic}}
+                            </h5>
+                            <p class='tags'>
+                                العلامات:
+                                {% for tag in post.tags.all %}
+                                <a href="{% url 'core:post_list_by_tag' tag.slug %}">{{tag.name}}</a>
+                                {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                        
+                        <br>
+                        <p class="card-text fs-5" style="font-family: Almarai Light;">بقلم: {{post.author.first_name}}                        
+                    </div>
+                </div>
+            </a>
+        </div>
         {% endfor %}
-    </p>
-    <p>
-        نشر في {{ post.publish  }} بواسطة {{post.author}}
-    </p>
-    {% endfor %}
+    </div>
 
     {% include 'pagination.html' with page=posts %}
 {% endblock content %}

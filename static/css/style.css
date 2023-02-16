@@ -13,4 +13,24 @@
 
 body {
     font-family: 'Almarai Regular', sans-serif;
+    display: grid;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #F8F9FA;
+}
+
+.card-body {
+    height: 15em;
+    background-color: #023F79;
+    color: #FFB600; 
+    display: grid;
+}
+
+.nav-item {
+    color: #023F79;
+}
+
+.card-text {
+    align-self: end;
 }
