@@ -11,6 +11,20 @@ To install this app, follow these steps:
 3. Run the migrations: `python manage.py migrate`
 4. Start the server: `python manage.py runserver`
 
+## Structure
+
+### lantern
+
+**lantern** is the main django project and it contain the settings and global configurations.
+
+### core
+
+**core** is the main app in the project and you can refer to the `urls.py` file inside the core app to start mapping the routes of the application.
+
+## Models
+
+The main model of the app is **Post** model it contain all of the data related to the post, and link to the autor aka **User**.
+
 ## Usage
 
 ### post_list
