@@ -1,7 +1,8 @@
-from django.views.generic import ListView
+from django.views.generic.base import TemplateView
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.urls import reverse
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -39,14 +40,24 @@ def post_list(request, tag_slug=None):
 
 
 def detail(request, year, month, day, post_slug):
-    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, slug=post_slug, publish__year=year, publish__month=month, publish__day=day)
+    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, 
+                             slug=post_slug, 
+                             publish__year=year, 
+                             publish__month=month, 
+                             publish__day=day)
 
-    # get all of the post comments
+    # get all of the active post comments
     comments = post.comments.filter(active=True)
     form = CommentForm()
 
+    # get the list of similar post
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', 'publish')[:3]
+    
     return render(request, 'detail.html', {
         'post': post,
+        'similar_posts': similar_posts,
         'comments': comments,
         'form': form,
     })
@@ -62,4 +73,9 @@ def post_comment(request, post_id):
         comment.post = post
         comment.save()
     return HttpResponseRedirect(post.get_absolute_url())
+
+
+
+class DemoView(TemplateView):
+    template_name = 'demo.html'
 
