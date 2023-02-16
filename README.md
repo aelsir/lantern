@@ -38,3 +38,10 @@ If you would like to contribute to this project, please follow these steps:
 ## License
 
 This project is licensed under the MIT License.
+
+## Contact
+
+you can contact and follow me here on GitHub or social media at:
+
+- [LinkedIn](https://www.linkedin.com/in/aelsir/)
+- [Facebook](https://www.facebook.com/ahmed.elsir.khalfalla/)
