@@ -1,20 +1,20 @@
-from django.views.generic.base import TemplateView
+# import libraries and functions
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.urls import reverse
 from django.db.models import Count
+from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from taggit.models import Tag
 
 
-
+# import from local files
 from .models import Post
 from .forms import CommentForm
-from taggit.models import Tag
 
 # Create your views here.
 
-
+# the main function which display the list of the posts written in the blog.
 def post_list(request, tag_slug=None):
     post_list = Post.published.all()
 
@@ -38,7 +38,7 @@ def post_list(request, tag_slug=None):
 
     })
 
-
+# displaying a details for a single choosen blog with it's comments
 def detail(request, year, month, day, post_slug):
     post = get_object_or_404(Post, status=Post.Status.PUBLISHED, 
                              slug=post_slug, 
@@ -62,6 +62,7 @@ def detail(request, year, month, day, post_slug):
         'form': form,
     })
 
+
 # Saving the comment into the database
 @require_POST
 def post_comment(request, post_id):
@@ -75,7 +76,7 @@ def post_comment(request, post_id):
     return HttpResponseRedirect(post.get_absolute_url())
 
 
-
+# just a demo and trial view
 class DemoView(TemplateView):
     template_name = 'demo.html'
 
