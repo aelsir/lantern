@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Almarai ExtraBold';
+    src: url(../fonts/Almarai-ExtraBold.ttf);
+}
+@font-face {
+    font-family: 'Almarai Regular';
+    src: url(../fonts/Almarai-Regular.ttf);
+}
+@font-face {
+    font-family: 'Almarai Light';
+    src: url(../fonts/Almarai-Light.ttf);
+}
+
+body {
+    font-family: 'Almarai ExtraBold', sans-serif;
+}
