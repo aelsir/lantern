@@ -3,13 +3,14 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.db.models import Count
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from taggit.models import Tag
 
 
 # import from local files
-from .models import Post
+from .models import Post, Video
 from .forms import CommentForm
 
 # Create your views here.
@@ -75,6 +76,11 @@ def post_comment(request, post_id):
         comment.save()
     return HttpResponseRedirect(post.get_absolute_url())
 
+
+class VideoView(ListView):
+    model = Video
+    template_name = 'videos_list.html'
+    context_object_name = 'videos'
 
 # just a demo and trial view
 class DemoView(TemplateView):

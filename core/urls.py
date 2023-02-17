@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import post_list, detail, post_comment, DemoView
+from .views import post_list, detail, post_comment, DemoView, VideoView
 
 app_name = 'core'
 
@@ -25,5 +25,6 @@ urlpatterns = [
     path('tag/<slug:tag_slug>/', post_list, name='post_list_by_tag'),
     path('<int:year>/<int:month>/<int:day>/<slug:post_slug>/', detail, name='detail'),
     path('<int:post_id>/comment/', post_comment, name='post_comment'),
-    path('demo/', DemoView.as_view(), name='demo')
+    path('demo/', DemoView.as_view(), name='demo'),
+    path('videos/', VideoView.as_view(), name='videos_list')
 ]

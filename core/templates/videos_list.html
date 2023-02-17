@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Lanten Blog
+{% endblock title %}
+    
+{% block content %}
+    
+    {% if tag %}
+        <h2 class="m-3 fs-1 text-center">بوستات تحتوي العلامات "{{ tag.name }}"</h2>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        {% for video in videos %}
+        
+        <div class="col-md-3 m-1">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{video.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    
+
+
+{% endblock content %}

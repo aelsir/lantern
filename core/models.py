@@ -71,3 +71,8 @@ class Comment(models.Model):
     def __str__(self):
         return f"تعليق بواسطة {self.name} على {self.post}"
     
+class Video(models.Model):
+     title = models.CharField(max_length=64)
+     link = models.CharField(max_length=64)
+     created = models.DateTimeField(auto_now_add=True)
+    

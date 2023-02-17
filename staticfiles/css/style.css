@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Almarai ExtraBold';
+    src: url(../fonts/Almarai-ExtraBold.ttf);
+}
+@font-face {
+    font-family: 'Almarai Regular';
+    src: url(../fonts/Almarai-Regular.ttf);
+}
+@font-face {
+    font-family: 'Almarai Light';
+    src: url(../fonts/Almarai-Light.ttf);
+}
+
+body {
+    font-family: 'Almarai Regular', sans-serif;
+    display: grid;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #F8F9FA;
+}
+
+.card-body {
+    height: 15em;
+    background-color: #023F79;
+    color: #FFB600; 
+    display: grid;
+}
+
+.nav-link {
+    color: #023F79;
+}
+.nav-link:hover {
+    color: #FFB600; 
+}
+
+p.tags, p.tags a {
+    color: whitesmoke;
+}
+
+.card-text {
+    align-self: end;
+}
+
+#post-header {
+    color: #023F79;
+    font-family: 'Almarai ExtraBold';
+}
+
+#post-body {
+    color: #023F79;
+    font-family: 'Almarai Light';
+}
+
+div h4{
+    justify-content: space-around;
+}
