@@ -33,7 +33,8 @@ def post_list(request, tag_slug=None):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render (request, 'list.html', {
+    # I should change this to list.html after finising
+    return render (request, 'demo.html', {
         'posts': posts,
         'tag': tag,
 

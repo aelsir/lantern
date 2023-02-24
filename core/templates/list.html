@@ -11,10 +11,9 @@
         <h2 class="m-3 fs-1 text-center">بوستات تحتوي العلامات "{{ tag.name }}"</h2>
     {% endif %}
 
-
     <div class="row g-5">
         {% for post in posts %}
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
             <a href="{{post.get_absolute_url}}" style="all:unset">
                 <div class="card">
                     <div class="card-body">
@@ -45,6 +44,8 @@
         {% endfor %}
     </div>
     <br>
+    
+    
 
     {% include 'pagination.html' with page=posts %}
 {% endblock content %}
