@@ -44,7 +44,7 @@ module.exports = {
     theme: {
         extend: {},
         fontFamily:{
-            'custom': ['Almarai', 'sans-serif'],
+            'custom': ['Noto Naskh Arabic', 'serif'],
         }
     },
     plugins: [

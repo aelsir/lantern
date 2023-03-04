@@ -6,30 +6,58 @@
 {% endblock title %}
     
 {% block content %}
-<div id='post-header'>
-    <h1>{{ post.title_arabic }}</h1>
-    <p>
-        تم النشر يوم {{ post.publish.date }} بواسطة: {{post.author.first_name}}
-    </p>
-</div>
-<div id='post-body' class='px-5'>
-    <br>
-    <h4>
-        {{ post.body | linebreaks }}
-    </h4>
+
+<div class="relative overflow-hidden bg-white py-16">
+  <div class="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full lg:[overflow-anchor:none]">
+    <div class="relative mx-auto h-full max-w-prose text-lg" aria-hidden="true">
+      <svg class="absolute top-12 left-full translate-x-32 transform" width="404" height="384" fill="none" viewBox="0 0 404 384">
+        <defs>
+          <pattern id="74b3fd99-0a6f-4271-bef2-e80eeafdf357" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="404" height="384" fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)" />
+      </svg>
+      <svg class="absolute top-1/2 right-full -translate-y-1/2 -translate-x-32 transform" width="404" height="384" fill="none" viewBox="0 0 404 384">
+        <defs>
+          <pattern id="f210dbf6-a58d-4871-961e-36d5016a0f49" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="404" height="384" fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)" />
+      </svg>
+      <svg class="absolute bottom-12 left-full translate-x-32 transform" width="404" height="384" fill="none" viewBox="0 0 404 384">
+        <defs>
+          <pattern id="d3eb07ae-5182-43e6-857d-35c643af9034" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="404" height="384" fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)" />
+      </svg>
+    </div>
+  </div>
+  <div class="relative px-6 lg:px-8">
+    <div class="mx-auto max-w-prose text-lg">
+      <h1>
+        <span class="block text-center text-lg font-semibold text-indigo-600">تم في النشر في {{ post.publish }}</span>
+        <span class="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">{{ post.title_arabic}}</span>
+      </h1>
+      <p class="mt-8 text-xl leading-8 text-gray-500">{{ post.body }}</p>
+    </div>
+  </div>
 
     <br>
-    <hr>
-    <br>
-
+<div class="relative px-6 lg:px-8">
+    <div class="mx-auto max-w-prose text-lg">
+        <div>
     {% with comments.count as total_comments %}
         <h2>
             {{ total_comments }} تعليقات
         </h2>
     {% endwith %}
-    
+
     {% for comment in comments %}
-        <div class="comment">  
+        <div class="comment">
             <p class="info">
                 التعليق {{ forloop.counter }} بواسطة {{ comment.name }}
                 {{ comment.created }}
@@ -48,15 +76,33 @@
         {% empty %}
         لا يوجد بوست مشابهه
     {% endfor %}
-
+            <br>
     <h2>أضف تعليق:</h2>
         <form action="{% url "core:post_comment" post.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <p><input type="submit" class="btn btn-primary" value="أضف تعليقا"></p>
+            <br>
+        <p><input type="submit" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" value="أضف تعليقا"></p>
     </form>
+
+    </div>
+    </div>
+  </div>
+
+
 </div>
-    
+
+
+    <div>
+  <label for="comment" class="block text-sm font-medium text-gray-700">Add your comment</label>
+  <div class="mt-1">
+    <textarea rows="4" name="comment" id="comment" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+  </div>
+</div>
+
+
+
+
 
 {% endblock content %}
     

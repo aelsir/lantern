@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
             'body': 'تعليقك',
         }
         widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control"}),
-            'email': forms.EmailInput(attrs={"class": "form-control"}),
-            'body': forms.Textarea(attrs={"class": "form-control"}),
+            "name": forms.TextInput(attrs={"class": "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"}),
+            'email': forms.EmailInput(attrs={"class": "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"}),
+            'body': forms.Textarea(attrs={"class": "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"}),
         }

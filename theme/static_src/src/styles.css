@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,6 @@
 
 @layer base {
     html {
-        font-family: 'Almarai', sans-serif;
+        font-family: 'Noto Naskh Arabic', serif;
     }
 }
