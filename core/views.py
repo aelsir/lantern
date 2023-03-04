@@ -8,46 +8,47 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from taggit.models import Tag
 
-
 # import from local files
 from .models import Post, Video
 from .forms import CommentForm
 
+
 # Create your views here.
 
-# the main function which display the list of the posts written in the blog.
+# the main function which display the list of the posts written on the blog.
 def post_list(request, tag_slug=None):
     post_list = Post.published.all()
-
     tag = None
+
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         post_list = post_list.filter(tags__in=[tag])
 
     paginator = Paginator(post_list, 6)
     page_number = request.GET.get('page', 1)
-    try: 
+    try:
         posts = paginator.page(page_number)
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render (request, 'list.html', {
+    return render(request, 'list.html', {
         'posts': posts,
         'tag': tag,
 
     })
 
-# displaying a details for a single choosen blog with it's comments
+
+# displaying a details for a single chosen blog with its comments
 def detail(request, year, month, day, post_slug):
-    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, 
-                             slug=post_slug, 
-                             publish__year=year, 
-                             publish__month=month, 
+    post = get_object_or_404(Post, status=Post.Status.PUBLISHED,
+                             slug=post_slug,
+                             publish__year=year,
+                             publish__month=month,
                              publish__day=day)
 
-    # get all of the active post comments
+    # get all the active post comments
     comments = post.comments.filter(active=True)
     form = CommentForm()
 
@@ -55,7 +56,7 @@ def detail(request, year, month, day, post_slug):
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', 'publish')[:3]
-    
+
     return render(request, 'detail.html', {
         'post': post,
         'similar_posts': similar_posts,
@@ -82,7 +83,7 @@ class VideoView(ListView):
     template_name = 'videos_list.html'
     context_object_name = 'videos'
 
+
 # just a demo and trial view
 class DemoView(TemplateView):
     template_name = 'demo.html'
-

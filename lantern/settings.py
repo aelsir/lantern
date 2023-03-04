@@ -47,9 +47,13 @@ INSTALLED_APPS = [
 
     # Third party application
     'taggit',
-    
 
+    # Tailwind configuration
+    'tailwind',
+    'theme',
+    'django_browser_reload',
 ]
+
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
@@ -61,6 +65,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # tailwind middleware
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'lantern.urls'
@@ -117,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+#LANGUAGE_CODE = 'en'
 
-#LANGUAGE_CODE = 'ar-SD'
+LANGUAGE_CODE = 'ar-SD'
 
 TIME_ZONE = 'Africa/Khartoum'
 
@@ -141,3 +148,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Tailwind configuration
+
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
