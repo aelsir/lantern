@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b4e06c2-401c-49ac-aa98-c8f266ad9664" name="Changes" comment="enchancing the comments section." />
+    <list default="true" id="6b4e06c2-401c-49ac-aa98-c8f266ad9664" name="Changes" comment="enchancing the comments section.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirement.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirement.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +65,7 @@
       <workItem from="1677288181306" duration="126000" />
       <workItem from="1677288313742" duration="252000" />
       <workItem from="1677960845851" duration="11626000" />
-      <workItem from="1678182057106" duration="3811000" />
+      <workItem from="1678182057106" duration="4781000" />
     </task>
     <task id="LOCAL-00001" summary="adding the tailwind branch">
       <created>1677968610705</created>
