@@ -11,7 +11,43 @@
     <h2 class="m-3 fs-1 text-center">بوستات تحتوي العلامات "{{ tag.name }}"</h2>
 {% endif %}
 
+<!-- The hero section with a a photo in the background -->
 
+<!-- Container for demo purpose -->
+<div>
+
+  <!-- Section: Design Block -->
+  <section class="mb-10">
+
+    <div
+      class="relative overflow-hidden bg-no-repeat bg-cover"
+      style="
+        background-position: 50%;
+        background-image: url('{% static 'img/blog-bg.jpg' %}');
+        height: 500px;
+      "
+    >
+      <div
+        class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
+        style="background-color: rgba(0, 0, 0, 0.75)"
+      >
+        <div class="flex justify-center items-center h-full">
+          <div class="text-center text-white px-6 md:px-12">
+            <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">
+              مدونة لانتيرن
+            </h1>
+              <p class="text-4xl">
+                  إقراء عن أفضل المواضيع في مجال البزنس و تطوير الذات
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+</div>
+<!-- Container for demo purpose -->
 
 <div class="bg-white px-6 pt-16 pb-20 lg:px-8 lg:pt-5 lg:pb-5">
     <div class="relative mx-auto max-w-lg divide-y-2 divide-gray-200 lg:max-w-7xl">
@@ -21,7 +57,7 @@
         </div>
 
 
-            <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+            <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12 justify-center">
                 {% for post in posts %}
                 <div>
                     <div>
