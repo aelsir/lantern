@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import post_list, detail, post_comment, DemoView, VideoView
+# from .views import post_list, detail, post_comment, DemoView, VideoView, postList
+from . import views
 
 app_name = 'core'
 
 urlpatterns = [
-    path('', post_list, name='list'),
-    path('tag/<slug:tag_slug>/', post_list, name='post_list_by_tag'),
-    path('<int:year>/<int:month>/<int:day>/<slug:post_slug>/', detail, name='detail'),
-    path('<int:post_id>/comment/', post_comment, name='post_comment'),
-    path('demo/', DemoView.as_view(), name='demo'),
-    path('videos/', VideoView.as_view(), name='videos_list')
+    path('', views.postList, name='list'),
+    path('tag/<slug:tag_slug>/', views.postList, name='post_list_by_tag'),
+    path('<int:year>/<int:month>/<int:day>/<slug:post_slug>/', views.detail, name='detail'),
+    path('<int:post_id>/comment/', views.post_comment, name='post_comment'),
+    path('subscribe/', views.subscribe, name='subscribe'),
+    path('demo/', views.DemoView.as_view(), name='demo'),
+    path('videos/', views.VideoView.as_view(), name='videos_list'),
 ]

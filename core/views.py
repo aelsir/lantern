@@ -1,68 +1,70 @@
 # import libraries and functions
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.utils import timezone
+from django.views import View
 from django.views.decorators.http import require_POST
-from django.db.models import Count
+from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from taggit.models import Tag
-
-
-# import from local files
-from .models import Post, Video
 from .forms import CommentForm
+# import from local files
+from .models import EmailSubscription, Post, Video
 
 # Create your views here.
 
-# the main function which display the list of the posts written in the blog.
-def post_list(request, tag_slug=None):
-    post_list = Post.published.all()
 
-    tag = None
-    if tag_slug:
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        post_list = post_list.filter(tags__in=[tag])
+class PostListView(ListView):
+    model = Post
+    template_name = 'list.html'
+    context_object_name = 'posts'
+    paginate_by = 6
 
-    paginator = Paginator(post_list, 6)
-    page_number = request.GET.get('page', 1)
-    try: 
-        posts = paginator.page(page_number)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
+    def get_queryset(self):
+        tag_slug = self.kwargs.get('tag_slug')
+        query = self.kwargs.get('title')
+        if tag_slug:
+            tag = get_object_or_404(Tag, slug=tag_slug)
+            return Post.published.filter(tags=tag)
+        if query:
+            return Post.published.filter(title__icontains=query)
+        else:
+            return Post.published.all()
 
-    return render (request, 'list.html', {
-        'posts': posts,
-        'tag': tag,
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.kwargs.get('tag_slug')
+        return context
 
-    })
 
-# displaying a details for a single choosen blog with it's comments
-def detail(request, year, month, day, post_slug):
-    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, 
-                             slug=post_slug, 
-                             publish__year=year, 
-                             publish__month=month, 
-                             publish__day=day)
+postList = PostListView.as_view()
 
-    # get all of the active post comments
-    comments = post.comments.filter(active=True)
-    form = CommentForm()
 
-    # get the list of similar post
-    post_tags_ids = post.tags.values_list('id', flat=True)
-    similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
-    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', 'publish')[:3]
-    
-    return render(request, 'detail.html', {
-        'post': post,
-        'similar_posts': similar_posts,
-        'comments': comments,
-        'form': form,
-    })
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'detail.html'
+    context_object_name = 'post'
+    slug_field = 'slug'
+    slug_url_kwarg = 'post_slug'
+    queryset = Post.objects.filter(
+        status=Post.Status.PUBLISHED,
+        publish__lte=timezone.now()
+    )
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+
+        context['similar_posts'] = post.tags.similar_objects()[:3]
+        context['comments'] = post.comments.filter(active=True)
+        context['form'] = CommentForm()
+
+        return context
+
+detail = PostDetailView.as_view()
 
 # Saving the comment into the database
 @require_POST
@@ -76,13 +78,27 @@ def post_comment(request, post_id):
         comment.save()
     return HttpResponseRedirect(post.get_absolute_url())
 
+class SubscribeView(View):
+    template_name = 'partial/subscribe.html'
+    success_url = reverse_lazy('core:list')
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST.get('email')
+        EmailSubscription.objects.create(email=email)
+        messages.success(request, 'Subscribed!')
+        return redirect(self.success_url)
+
+subscribe = SubscribeView.as_view()
 
 class VideoView(ListView):
     model = Video
     template_name = 'videos_list.html'
     context_object_name = 'videos'
 
+
 # just a demo and trial view
 class DemoView(TemplateView):
     template_name = 'demo.html'
-

@@ -1,0 +1,14 @@
+# IMPROVEMENT
+
+~~1. delete sholdn't be on cascate.~~
+2. Fix the responisveness of the website.
+3. a bug when you have long title go out of the post box.
+4. Adding domain to pythonanywhere.
+
+# my changes on the code
+1. refactor the post_list, post_detail and convert them from fbv to cbv
+2. add the newsletter subscribe (i think you need to redesign  the front)
+3. add the functionality of sending emails with celery (it's ready you need to add it to the create view when you add it)
+4. using pipenv in the project 
+5. also i have added a info message to your base template to render the messages ( i think you need to redesign to fit your need's)
+6. i have added the .env file functionality to keep your data safe specially the secret_key.

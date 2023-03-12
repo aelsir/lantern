@@ -51,8 +51,14 @@ class Post(models.Model):
                                             self.publish.month,
                                             self.publish.day,
                                             self.slug])
-    
-    
+
+class EmailSubscription(models.Model):
+    email = models.EmailField()
+    subscribed_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email    
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)

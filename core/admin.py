@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Video
+from .models import Post, Comment, Video, EmailSubscription
 
 # Register your models here.
 @admin.register(Post)
@@ -12,6 +12,10 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ['status', 'publish']
 
+@admin.register(EmailSubscription)
+class EmailSubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['email']
+    search_fields = ['email']
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'post', 'created', 'active']
