@@ -20,13 +20,16 @@ body {
 }
 
 .card {
-    height: 15em;
     background-color: #023F79;
     color: #FFB600; 
-    white-space: nowrap;
     overflow: hidden;
     overflow-x: auto;
+    height: 100%;
     
+}
+
+.card-group {
+    display: flex;
 }
 
 

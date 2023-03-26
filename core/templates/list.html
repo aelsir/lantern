@@ -12,13 +12,13 @@
     {% endif %}
 
     <div class="row g-5">
+    <div class="card-group">
         {% for post in posts %}
         <div class="col-md-4 col-sm-12">
             <a href="{{post.get_absolute_url}}" style="all:unset">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-
                             <h5 class="fs-1">
                                 {{post.title_arabic}}
                             </h5>
@@ -32,16 +32,18 @@
                             </p>
 
                         </div>
-                        
+
                         <br>
 
-                        <p class="card-text fs-5" style="font-family: Almarai Light;">بقلم: {{post.author.first_name}} 
-                                                   
+                        <p class="card-text fs-5" style="font-family: Almarai Light;">بقلم: {{post.author.first_name}}
+
                     </div>
                 </div>
             </a>
         </div>
         {% endfor %}
+    </div>
+
     </div>
     <br>
     
