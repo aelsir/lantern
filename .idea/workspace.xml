@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4e06c2-401c-49ac-aa98-c8f266ad9664" name="Changes" comment="adding the new requirement">
-      <change beforePath="$PROJECT_DIR$/core/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
       <workItem from="1677960845851" duration="11626000" />
       <workItem from="1678182057106" duration="5849000" />
       <workItem from="1678858000922" duration="107000" />
-      <workItem from="1679834707398" duration="1007000" />
+      <workItem from="1679834707398" duration="1225000" />
     </task>
     <task id="LOCAL-00001" summary="adding the tailwind branch">
       <created>1677968610705</created>
