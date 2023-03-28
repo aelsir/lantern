@@ -27,6 +27,13 @@ The main model of the app is **Post** model it contain all of the data related t
 
 ## Usage
 
+### Branches
+I was experimenting with different frontend libraries and rewrote the entire blog in both `bootstrap` and `tailwind` and deployed them in different branches
+1. `master` contain the main branch that is been deployed and currently it's build on bootstrap
+2. `bootstap` contain the blog styled using bootstrap library.
+3. `tailwind` contain the blog styled using tailwind library, also if you want to use it will need more configurations including: `installing nodejs modules` and `running tailwind engine`.
+
+
 ### post_list
 
 This view displays a list of all the posts that have been published on the blog. To access this view, go to <http://localhost:8000/>. Each post is displayed as a clickable link that will take you to the post_detail view.
